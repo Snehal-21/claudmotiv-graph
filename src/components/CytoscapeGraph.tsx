@@ -70,7 +70,7 @@ interface CytoscapeGraphProps {
   onEdgeClick: (edge: GraphEdge) => void;
 }
 
-function buildStyles(state: GraphState): cytoscape.Stylesheet[] {
+function buildStyles(state: GraphState): any[] {
   const degree: Record<string, number> = {};
   state.nodes.forEach(n => { degree[n.id] = 0; });
   state.edges.forEach(e => {
@@ -78,7 +78,7 @@ function buildStyles(state: GraphState): cytoscape.Stylesheet[] {
     degree[e.target] = (degree[e.target] ?? 0) + 1;
   });
 
-  const styles: cytoscape.Stylesheet[] = [
+  const styles: cytoscape.StylesheetStyle[] = [
     {
       selector: 'node',
       style: {
@@ -341,7 +341,7 @@ export default function CytoscapeGraph({
     const cy = cyRef.current;
     if (!cy) return;
 
-    cy.style(buildStyles(state) as cytoscape.Stylesheet[]);
+    cy.style(buildStyles(state) as cytoscape.StylesheetStyle[]);
 
     const existingNodeIds = new Set(cy.nodes().map((n: NodeSingular) => n.id()));
     const stateNodeIds = new Set(state.nodes.map(n => n.id));
