@@ -1,0 +1,225 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #060611;
+  --surface: rgba(10, 10, 26, 0.95);
+  --border: rgba(74, 158, 255, 0.18);
+  --blue: #4a9eff;
+  --green: #00ffcc;
+  --pink: #ff6b9d;
+  --text: #c8d0e0;
+  --muted: #6688aa;
+  --dim: #334455;
+  --font-mono: 'Space Mono', monospace;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(74, 158, 255, 0.2); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(74, 158, 255, 0.4); }
+
+/* Icon button */
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background 0.15s;
+}
+.icon-btn:hover {
+  color: var(--text);
+  background: rgba(74, 158, 255, 0.08);
+}
+.icon-btn-danger:hover {
+  color: #ff4466;
+  background: rgba(255, 68, 102, 0.08);
+}
+
+/* Field label */
+.field-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+/* Field input */
+.field-input {
+  width: 100%;
+  background: rgba(74, 158, 255, 0.04);
+  border: 1px solid rgba(74, 158, 255, 0.15);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+  resize: vertical;
+}
+.field-input:focus {
+  border-color: var(--blue);
+  background: rgba(74, 158, 255, 0.07);
+}
+.field-input::placeholder {
+  color: var(--dim);
+}
+.field-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+.field-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236688aa' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+.field-select option {
+  background: #0a0a1a;
+  color: var(--text);
+}
+
+/* Buttons */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+}
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: rgba(74, 158, 255, 0.12);
+  border: 1px solid rgba(74, 158, 255, 0.4);
+  color: var(--blue);
+}
+.btn-primary:hover:not(:disabled) {
+  background: rgba(74, 158, 255, 0.22);
+  border-color: var(--blue);
+}
+.btn-accent {
+  background: rgba(255, 107, 157, 0.1);
+  border: 1px solid rgba(255, 107, 157, 0.4);
+  color: var(--pink);
+}
+.btn-accent:hover:not(:disabled) {
+  background: rgba(255, 107, 157, 0.2);
+  border-color: var(--pink);
+}
+.btn-danger {
+  background: rgba(255, 68, 102, 0.08);
+  border: 1px solid rgba(255, 68, 102, 0.3);
+  color: #ff4466;
+}
+.btn-danger:hover {
+  background: rgba(255, 68, 102, 0.18);
+  border-color: #ff4466;
+}
+.btn-ghost {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--muted);
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+}
+
+/* Toolbar button */
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 7px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+  backdrop-filter: blur(12px);
+}
+.toolbar-btn-primary {
+  background: rgba(74, 158, 255, 0.12);
+  border: 1px solid rgba(74, 158, 255, 0.35);
+  color: var(--blue);
+}
+.toolbar-btn-primary:hover {
+  background: rgba(74, 158, 255, 0.2);
+  border-color: var(--blue);
+  transform: translateX(2px);
+}
+.toolbar-btn-accent {
+  background: rgba(255, 107, 157, 0.1);
+  border: 1px solid rgba(255, 107, 157, 0.3);
+  color: var(--pink);
+}
+.toolbar-btn-accent:hover {
+  background: rgba(255, 107, 157, 0.18);
+  border-color: var(--pink);
+  transform: translateX(2px);
+}
+
+/* Tag buttons */
+.tag-btn {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  cursor: pointer;
+  background: rgba(74, 158, 255, 0.05);
+  border: 1px solid rgba(74, 158, 255, 0.12);
+  color: var(--muted);
+  transition: all 0.12s;
+}
+.tag-btn:hover {
+  border-color: rgba(74, 158, 255, 0.35);
+  color: var(--text);
+}
+.tag-btn-active {
+  background: rgba(74, 158, 255, 0.15);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+/* Cytoscape canvas */
+.cytoscape-container canvas {
+  outline: none;
+}
